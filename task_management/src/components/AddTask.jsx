@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/features/taskSlice";
+import { addTask } from "../redux/reducers/taskSlice";
 
 const AddTask = () => {
   const [inputTask, setInputTask] = useState("");
@@ -13,8 +13,7 @@ const AddTask = () => {
 
     if (inputTask === "") {
       toast.error("Plz enter any Task");
-    } 
-    else {
+    } else {
       dispatch(addTask({ id: Date.now(), task: inputTask }));
       toast.success("Task is added");
       setInputTask("");

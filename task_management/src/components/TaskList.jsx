@@ -4,8 +4,8 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaEdit } from "react-icons/fa";
 import { MdFileDownloadDone } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, editTask, toggleStatus} from "../redux/features/taskSlice";
-import { selectFilteredTasks } from "../redux/features/taskSlice";
+import { deleteTask, editTask, toggleStatus } from "../redux/reducers/taskSlice";
+import { selectFilteredTasks } from "../redux/reducers/taskSlice";
 
 const TaskList = () => {
   const tasks = useSelector(selectFilteredTasks);
@@ -19,12 +19,14 @@ const TaskList = () => {
     toast.info("Task is deleted");
   };
 
-  const handleEdit = (id, task) => {
+  const handleEdit = (id, task, e) => {
+    e.stopPropagation();
     setEditingTask(id);
     setNewTask(task);
   };
 
-  const handleSave = (id) => {
+  const handleSave = (id,e) => {
+     e.stopPropagation();
     if (newTask !== "") {
       dispatch(editTask({ id, updatedTask: newTask }));
       setEditingTask("");
@@ -65,8 +67,9 @@ const TaskList = () => {
                     type="text"
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
+                    onClick={(e)=>e.stopPropagation()}
                   />
-                  <button onClick={() => handleSave(task.id)}>
+                  <button onClick={(e) => handleSave(task.id, e)}>
                     <MdFileDownloadDone id="save-icon" />
                   </button>
                 </div>
@@ -74,7 +77,7 @@ const TaskList = () => {
                 <>
                   {index + 1} - {task.task} - {task.status}
                   <div className="listIcons">
-                    <FaEdit onClick={() => handleEdit(task.id, task.task)} />
+                    <FaEdit onClick={(e) => handleEdit(task.id, task.task, e)} />
                     <RiDeleteBin5Fill onClick={() => handleDelete(task.id)} />
                   </div>
                 </>
