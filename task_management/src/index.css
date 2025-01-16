@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playwrite+VN:wght@100..400&display=swap");
+
+.font {
+  font-family: "Jura", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #891f04;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app {
+  height: 100vh;
+  padding-top: 30px;
+  background: #ff7a59;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ------------------------------------------AddTaskComponent---------------------------------- */
+.inputButtonDiv {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+input {
+  background: #f4f1eb;
+  padding: 10px 40px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+button {
+  background: #f4f1eb;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+/* ---------------------------------------TaskListComponent------------------------------------ */
+#btn-icon {
+  height: 28px;
+  width: 40px;
+}
+.todolist {
+  width: 80%;
+}
+.listparent {
+  height: 300px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.todolist li,
+p {
+  position: relative;
+  display: flex;
+  list-style: none;
+  padding: 10px;
+  background-color: #f4f1eb;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.listIcons {
+  display: flex;
+  gap: 10px;
+  padding-right: 10px;
+  position: absolute;
+  right: 0;
+}
+.edit {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.edit input {
+  width: 90%;
+}
+#save-icon {
+  font-size: 1.5rem;
+  color: #891f04;
+}
+/* ----------------------------------filterTaskComponent---------------------------- */
+.filterby {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+input[type="radio"] {
+  accent-color: #891f04;
+}
